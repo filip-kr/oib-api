@@ -33,5 +33,13 @@ class OibController extends AbstractController
 
             return $this->json($data);
         }
+
+        if ($request->query->get('validate')) {
+            return $this->json(
+                $oibService->isOibValid(
+                    $request->query->get('validate')
+                )
+            );
+        }
     }
 }
