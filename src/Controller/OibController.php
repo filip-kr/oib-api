@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Service\OibService;
 
 class OibController extends AbstractController
 {
@@ -17,11 +18,20 @@ class OibController extends AbstractController
         defaults: ['_format' => 'json'],
         methods: ['GET']
     )]
-    public function index(Request $request): JsonResponse
+    public function index(
+        Request $request,
+        OibService $oibService
+    ): JsonResponse 
     {
-        return $this->json([
-            'message' => 'Welcome to your new controller!',
-            'path' => 'src/Controller/OibController.php',
-        ]);
+        if ($request->query->get('generate')) {
+            $count = $request->query->get('generate');
+            $data = [];
+
+            for ($i = 0; $i < $count; $i++) {
+                $data[] = $oibService->generateOib();
+            }
+
+            return $this->json($data);
+        }
     }
 }
