@@ -18,7 +18,7 @@ class OibController extends AbstractController
         defaults: ['_format' => 'json'],
         methods: ['GET']
     )]
-    public function index(
+    public function __invoke(
         Request $request,
         OibService $oibService
     ): JsonResponse 
@@ -41,5 +41,7 @@ class OibController extends AbstractController
                 )
             );
         }
+
+        return $this->json('USAGE: ?generate={count} OR ?validate={oib}');
     }
 }

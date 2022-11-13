@@ -44,6 +44,14 @@ final class OibService
 
     public function isOibValid(?string $oib): bool
     {
+        if (strlen($oib) != 11) {
+            return false;
+        }
+
+        if (!is_numeric($oib)) {
+            return false;
+        }
+
         $oibArray = array_map('intval', str_split($oib));
 
         $lastDigit = $oibArray[10];
