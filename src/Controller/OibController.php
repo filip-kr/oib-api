@@ -14,7 +14,7 @@ class OibController extends AbstractController
 {
     #[Route(
         path: '/oib',
-        name: 'app_oib',
+        name: 'api_oib',
         defaults: ['_format' => 'json'],
         methods: ['GET']
     )]
@@ -41,7 +41,5 @@ class OibController extends AbstractController
                 )
             );
         }
-
-        return $this->json('USAGE: ?generate={count} OR ?validate={oib}');
     }
 }

@@ -18,12 +18,12 @@ Built with Symfony 6
 #
 
 ### Usage
-```?generate={count}``` OR ```?validate={oib}```
+```/oib?generate={count}``` OR ```/oib?validate={oib}```
 
 #
 
 ### Examples
-Input: ```?generate=5``` </br>
+Input: ```/oib?generate=5``` </br>
 
 Output: </br>
 ```
@@ -36,6 +36,6 @@ Output: </br>
 ]
 ```
 
-Input: ```?validate=45163407168``` </br>
+Input: ```/oib?validate=45163407168``` </br>
 
 Output: ```true```
